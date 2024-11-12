@@ -8,11 +8,9 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGODB_CONNECT_STRING, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+mongoose.connect(process.env.MONGODB_CONNECT_STRING)
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.log("MongoDB connection error:", err));
 
 app.use(express.json());
 app.use('/exercises', exerciseRoutes);
